@@ -49,14 +49,17 @@ class HeroComponent extends HTMLElement {
 					<i class="nf nf-md-hexagon_multiple"></i>
 					Community
 				</small>
-				<span class="sneaky">Sneaky</span><span class="annie">Annie</span>
+				<div class="branding-title">
+					<div id="test" class="sneaky"></div>
+					<div class="annie">Annie</div>
+				</div>
 			</h1>
 		`;
 
 		return this;
 	}
 
-	listeners() {
+	async listeners() {
 		const hexagonList = this.querySelectorAll('.hex-col');
 		const randomHexIdx = Math.floor(Math.random() * ((hexagonList.length - 1) - 1) + 1);
 		console.log(hexagonList.length);
@@ -73,6 +76,14 @@ class HeroComponent extends HTMLElement {
 				hex.append(icon);
 			}
 		});
+
+		const sneakyType = new window.TypeIt('#test', {
+			speed: 100,
+			afterComplete: () => {
+				sneakyType.destroy(true);
+			}
+		})
+		sneakyType.pause(1200).type('Sneaky').pause(1600).go();
 
 		return this;
 	}

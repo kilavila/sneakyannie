@@ -133,7 +133,7 @@ app-hero {
 	--hex-spacing: 6px;
 	--hex-outer-color: var(--ctp-peach);
 	--hex-inner-color: var(--ctp-base);
-	--hex-inner-opacity: 0.9;
+	--hex-inner-opacity: .15;
 
 	position: relative;
 	overflow-x: hidden;
@@ -196,15 +196,19 @@ app-hero {
 
 					&>.hex-top {
 						width: 0;
+						margin-bottom: -1px;
 						border-bottom: calc(var(--hex-h) - var(--hex-inner-diff)) solid var(--hex-inner-color);
 						border-left: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
 						border-right: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
+						border-radius: 2px;
 					}
 
 					&>.hex-center {
 						width: calc((var(--hex-w) * 2) - (var(--hex-inner-diff) * 2));
 						height: calc((var(--hex-h) * 2) - (var(--hex-inner-diff) * 2));
+						margin-bottom: -1px;
 						background-color: var(--hex-inner-color);
+						border-radius: 2px;
 					}
 
 					&>.hex-bottom {
@@ -212,6 +216,7 @@ app-hero {
 						border-top: calc(var(--hex-h) - var(--hex-inner-diff)) solid var(--hex-inner-color);
 						border-left: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
 						border-right: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
+						border-radius: 2px;
 					}
 				}
 
@@ -230,7 +235,8 @@ app-hero {
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		font-size: 5em;
+		width: 100%;
+		font-size: 4em;
 		text-align: center;
 		text-shadow: 0 2px 4px var(--ctp-crust),
 			0 0 20px var(--ctp-crust),
@@ -250,18 +256,25 @@ app-hero {
 			}
 		}
 
-		&>.sneaky {
-			font-family: 'Briem Hand';
-			font-weight: 400;
-			font-style: normal;
-			color: var(--ctp-yellow);
-		}
+		&>.branding-title {
+			width: 100%;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
 
-		&>.annie {
-			font-family: "Roboto", sans-serif;
-			font-weight: 400;
-			font-style: normal;
-			color: var(--ctp-rosewater);
+			&>.sneaky {
+				font-family: 'Briem Hand';
+				font-weight: 400;
+				font-style: normal;
+				color: var(--ctp-yellow);
+			}
+
+			&>.annie {
+				font-family: "Roboto", sans-serif;
+				font-weight: 400;
+				font-style: normal;
+				color: var(--ctp-rosewater);
+			}
 		}
 	}
 
