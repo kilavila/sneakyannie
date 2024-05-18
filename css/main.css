@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Briem+Hand&display=swap');
+@import url('https://www.nerdfonts.com/assets/css/webfont.css');
+
+/* Catppuccin Mocha */
+:root {
+	--ctp-rosewater: #f5e0dc;
+	--ctp-flamingo: #f2cdcd;
+	--ctp-pink: #f5c2e7;
+	--ctp-mauve: #cba6f7;
+	--ctp-red: #f38ba8;
+	--ctp-maroon: #eba0ac;
+	--ctp-peach: #fab387;
+	--ctp-yellow: #f9e2af;
+	--ctp-green: #a6e3a1;
+	--ctp-teal: #94e2d5;
+	--ctp-sky: #89dceb;
+	--ctp-sapphire: #74c7ec;
+	--ctp-blue: #89b4fa;
+	--ctp-lavender: #b4befe;
+	--ctp-text: #cdd6f4;
+	--ctp-subtext-1: #bac2de;
+	--ctp-subtext-0: #a6adc8;
+	--ctp-overlay-2: #9399b2;
+	--ctp-overlay-1: #7f849c;
+	--ctp-overlay-0: #6c7086;
+	--ctp-surface-2: #585b70;
+	--ctp-surface-1: #45475a;
+	--ctp-surface-0: #313244;
+	--ctp-base: #1e1e2e;
+	--ctp-mantle: #181825;
+	--ctp-crust: #11111b;
+
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background-color: var(--ctp-base);
+	color: var(--ctp-text);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-transform: uppercase;
+	border-bottom: 2px solid var(--ctp-lavender);
+}
+
+p {
+	max-width: 600px;
+}
+
+app-hero,
+app-about,
+app-commands {
+	margin: 32px 0;
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.roboto-thin {
+	font-family: "Roboto", sans-serif;
+	font-weight: 100;
+	font-style: normal;
+}
+
+.roboto-regular-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.roboto-black {
+	font-family: "Roboto", sans-serif;
+	font-weight: 900;
+	font-style: normal;
+}
+
+app-navbar {
+	width: 100%;
+	padding: 1.5em 3em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+
+	&>a {
+		display: block;
+		padding: 6px 10px;
+		color: var(--ctp-text);
+		font-size: 1.1em;
+		text-decoration: none;
+		border-bottom: 2px solid transparent;
+		transition-duration: .2s;
+		font-family: "Roboto", sans-serif;
+		font-weight: 700;
+		font-style: normal;
+
+		&:hover {
+			border-color: var(--ctp-red);
+		}
+
+		&>i {
+			margin-right: 6px;
+			color: var(--ctp-blue);
+		}
+	}
+}
+
+app-hero {
+	--hex-w: calc(26px * 2);
+	--hex-h: calc(15px * 2);
+	--hex-inner-diff: 2px;
+	--hex-spacing: 6px;
+	--hex-outer-color: var(--ctp-peach);
+	--hex-inner-color: var(--ctp-base);
+	--hex-inner-opacity: 0.9;
+
+	position: relative;
+	overflow-x: hidden;
+
+	&>.hex-row {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&:nth-child(1n + 2) {
+			margin-top: calc(-1 * var(--hex-h));
+		}
+
+		&>.hex-col {
+			position: relative;
+			padding: var(--hex-spacing);
+
+			&>.hexagon-bee-icon {
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-size: 2.5em;
+				color: var(--ctp-rosewater);
+			}
+
+			&>.hex-col-inner {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+
+				&>.hex-top {
+					width: 0;
+					border-bottom: var(--hex-h) solid var(--hex-outer-color);
+					border-left: var(--hex-w) solid transparent;
+					border-right: var(--hex-w) solid transparent;
+				}
+
+				&>.hex-center {
+					width: calc(var(--hex-w) * 2);
+					height: calc(var(--hex-h) * 2);
+					background-color: var(--hex-outer-color);
+				}
+
+				&>.hex-bottom {
+					width: 0;
+					border-top: var(--hex-h) solid var(--hex-outer-color);
+					border-left: var(--hex-w) solid transparent;
+					border-right: var(--hex-w) solid transparent;
+				}
+
+				&>.hex-inner {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					opacity: var(--hex-inner-opacity);
+
+					&>.hex-top {
+						width: 0;
+						border-bottom: calc(var(--hex-h) - var(--hex-inner-diff)) solid var(--hex-inner-color);
+						border-left: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
+						border-right: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
+					}
+
+					&>.hex-center {
+						width: calc((var(--hex-w) * 2) - (var(--hex-inner-diff) * 2));
+						height: calc((var(--hex-h) * 2) - (var(--hex-inner-diff) * 2));
+						background-color: var(--hex-inner-color);
+					}
+
+					&>.hex-bottom {
+						width: 0;
+						border-top: calc(var(--hex-h) - var(--hex-inner-diff)) solid var(--hex-inner-color);
+						border-left: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
+						border-right: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
+					}
+				}
+
+			}
+
+			/* &>.hex-inner */
+		}
+
+		/* .hex-col */
+	}
+
+	/* &>.hex-row */
+
+	&>.branding {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 5em;
+		text-align: center;
+		text-shadow: 0 2px 4px var(--ctp-crust),
+			0 0 20px var(--ctp-crust),
+			0 0 50px var(--ctp-crust);
+
+		&>small {
+			display: block;
+			margin-bottom: -12px;
+			font-size: 0.3em;
+			font-family: "Roboto", sans-serif;
+			font-weight: 700;
+			font-style: normal;
+			color: var(--ctp-blue);
+
+			&>i {
+				color: var(--ctp-rosewater);
+			}
+		}
+
+		&>.sneaky {
+			font-family: 'Briem Hand';
+			font-weight: 400;
+			font-style: normal;
+			color: var(--ctp-yellow);
+		}
+
+		&>.annie {
+			font-family: "Roboto", sans-serif;
+			font-weight: 400;
+			font-style: normal;
+			color: var(--ctp-rosewater);
+		}
+	}
+
+	/* &>.branding */
+}
+
+/* app-hero */
+
+
+app-about {
+	gap: 18px;
+	text-align: center;
+
+	&>p {
+		font-size: 1.25em;
+	}
+
+	&>.section-icons {
+		display: flex;
+		gap: 12px;
+
+		&>i {
+			font-size: 1.3em;
+			color: var(--ctp-blue);
+		}
+	}
+}
