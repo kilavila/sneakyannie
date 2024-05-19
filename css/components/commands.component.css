@@ -38,10 +38,20 @@ app-commands {
 		max-width: 500px;
 		list-style: none;
 
+		&>.cmd-expand-list {
+			width: fit-content;
+			margin: 24px auto;
+			padding: 6px;
+			color: var(--ctp-blue);
+			text-align: center;
+			cursor: pointer;
+		}
+
 		&>.list-item {
 			margin: 10px;
 			padding: 6px 12px;
 			border-radius: 4px;
+			cursor: pointer;
 
 			&:nth-child(odd) {
 				background-color: var(--ctp-surface-0);

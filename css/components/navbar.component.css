@@ -19,7 +19,7 @@ app-navbar {
 		font-style: normal;
 
 		&:hover {
-			border-color: var(--ctp-red);
+			border-color: var(--ctp-blue);
 		}
 
 		&>i {

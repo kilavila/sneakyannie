@@ -32,6 +32,7 @@ app-hero {
 				transform: translate(-50%, -50%);
 				font-size: 2.5em;
 				color: var(--ctp-rosewater);
+				text-shadow: 0 0 4px var(--ctp-crust);
 			}
 
 			&>.hex-col-inner {
@@ -113,6 +114,7 @@ app-hero {
 		text-shadow: 0 2px 4px var(--ctp-crust),
 			0 0 20px var(--ctp-crust),
 			0 0 50px var(--ctp-crust);
+		user-select: none;
 
 		&>small {
 			display: block;
