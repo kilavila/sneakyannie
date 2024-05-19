@@ -1,0 +1,26 @@
+app-about {
+	gap: 18px;
+	text-align: center;
+
+	&>p {
+		font-size: 1.25em;
+	}
+
+	&>.section-icons {
+		display: flex;
+		gap: 12px;
+
+		&>i {
+			font-size: 1.3em;
+			color: var(--ctp-blue);
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	app-about {
+		&>p {
+			font-size: .9em;
+		}
+	}
+}

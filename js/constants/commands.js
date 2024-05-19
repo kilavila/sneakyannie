@@ -1,4 +1,4 @@
-const commands = [
+export const commands = [
 	{
 		keyword: '!clip',
 		description: 'Clips the last 30s of stream and auto-posts it in my discord',

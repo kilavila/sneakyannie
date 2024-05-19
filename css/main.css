@@ -2,6 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Briem+Hand&display=swap');
 @import url('https://www.nerdfonts.com/assets/css/webfont.css');
 
+@import url('./components/navbar.component.css');
+@import url('./components/hero.component.css');
+@import url('./components/about.component.css');
+@import url('./components/commands.component.css');
+
 /* Catppuccin Mocha */
 :root {
 	--ctp-rosewater: #f5e0dc;
@@ -35,6 +40,7 @@
 
 * {
 	box-sizing: border-box;
+	max-width: 100%;
 	margin: 0;
 	padding: 0;
 	font-family: "Roboto", sans-serif;
@@ -93,212 +99,4 @@ app-commands {
 	font-family: "Roboto", sans-serif;
 	font-weight: 900;
 	font-style: normal;
-}
-
-app-navbar {
-	width: 100%;
-	padding: 1.5em 3em;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 12px;
-
-	&>a {
-		display: block;
-		padding: 6px 10px;
-		color: var(--ctp-text);
-		font-size: 1.1em;
-		text-decoration: none;
-		border-bottom: 2px solid transparent;
-		transition-duration: .2s;
-		font-family: "Roboto", sans-serif;
-		font-weight: 700;
-		font-style: normal;
-
-		&:hover {
-			border-color: var(--ctp-red);
-		}
-
-		&>i {
-			margin-right: 6px;
-			color: var(--ctp-blue);
-		}
-	}
-}
-
-app-hero {
-	--hex-w: calc(26px * 2);
-	--hex-h: calc(15px * 2);
-	--hex-inner-diff: 2px;
-	--hex-spacing: 6px;
-	--hex-outer-color: var(--ctp-peach);
-	--hex-inner-color: var(--ctp-base);
-	--hex-inner-opacity: .15;
-
-	position: relative;
-	overflow-x: hidden;
-
-	&>.hex-row {
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		&:nth-child(1n + 2) {
-			margin-top: calc(-1 * var(--hex-h));
-		}
-
-		&>.hex-col {
-			position: relative;
-			padding: var(--hex-spacing);
-
-			&>.hexagon-bee-icon {
-				display: block;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				font-size: 2.5em;
-				color: var(--ctp-rosewater);
-			}
-
-			&>.hex-col-inner {
-				position: relative;
-				display: flex;
-				flex-direction: column;
-
-				&>.hex-top {
-					width: 0;
-					border-bottom: var(--hex-h) solid var(--hex-outer-color);
-					border-left: var(--hex-w) solid transparent;
-					border-right: var(--hex-w) solid transparent;
-				}
-
-				&>.hex-center {
-					width: calc(var(--hex-w) * 2);
-					height: calc(var(--hex-h) * 2);
-					background-color: var(--hex-outer-color);
-				}
-
-				&>.hex-bottom {
-					width: 0;
-					border-top: var(--hex-h) solid var(--hex-outer-color);
-					border-left: var(--hex-w) solid transparent;
-					border-right: var(--hex-w) solid transparent;
-				}
-
-				&>.hex-inner {
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-					opacity: var(--hex-inner-opacity);
-
-					&>.hex-top {
-						width: 0;
-						margin-bottom: -1px;
-						border-bottom: calc(var(--hex-h) - var(--hex-inner-diff)) solid var(--hex-inner-color);
-						border-left: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
-						border-right: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
-						border-radius: 2px;
-					}
-
-					&>.hex-center {
-						width: calc((var(--hex-w) * 2) - (var(--hex-inner-diff) * 2));
-						height: calc((var(--hex-h) * 2) - (var(--hex-inner-diff) * 2));
-						margin-bottom: -1px;
-						background-color: var(--hex-inner-color);
-						border-radius: 2px;
-					}
-
-					&>.hex-bottom {
-						width: 0;
-						border-top: calc(var(--hex-h) - var(--hex-inner-diff)) solid var(--hex-inner-color);
-						border-left: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
-						border-right: calc(var(--hex-w) - var(--hex-inner-diff)) solid transparent;
-						border-radius: 2px;
-					}
-				}
-
-			}
-
-			/* &>.hex-inner */
-		}
-
-		/* .hex-col */
-	}
-
-	/* &>.hex-row */
-
-	&>.branding {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 100%;
-		font-size: 4em;
-		text-align: center;
-		text-shadow: 0 2px 4px var(--ctp-crust),
-			0 0 20px var(--ctp-crust),
-			0 0 50px var(--ctp-crust);
-
-		&>small {
-			display: block;
-			margin-bottom: -12px;
-			font-size: 0.3em;
-			font-family: "Roboto", sans-serif;
-			font-weight: 700;
-			font-style: normal;
-			color: var(--ctp-blue);
-
-			&>i {
-				color: var(--ctp-rosewater);
-			}
-		}
-
-		&>.branding-title {
-			width: 100%;
-			display: flex;
-			align-items: flex-end;
-			justify-content: center;
-
-			&>.sneaky {
-				font-family: 'Briem Hand';
-				font-weight: 400;
-				font-style: normal;
-				color: var(--ctp-yellow);
-			}
-
-			&>.annie {
-				font-family: "Roboto", sans-serif;
-				font-weight: 400;
-				font-style: normal;
-				color: var(--ctp-rosewater);
-			}
-		}
-	}
-
-	/* &>.branding */
-}
-
-/* app-hero */
-
-
-app-about {
-	gap: 18px;
-	text-align: center;
-
-	&>p {
-		font-size: 1.25em;
-	}
-
-	&>.section-icons {
-		display: flex;
-		gap: 12px;
-
-		&>i {
-			font-size: 1.3em;
-			color: var(--ctp-blue);
-		}
-	}
 }
