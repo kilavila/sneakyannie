@@ -12,7 +12,7 @@ app-about {
 
 		&>i {
 			font-size: 1.3em;
-			color: var(--ctp-blue);
+			color: var(--ctp-lavender);
 		}
 	}
 }

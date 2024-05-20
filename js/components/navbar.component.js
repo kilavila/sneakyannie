@@ -4,7 +4,8 @@ class NavbarComponent extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.render();
+		this.render()
+			.listeners();
 	}
 
 	render() {
@@ -26,6 +27,25 @@ class NavbarComponent extends HTMLElement {
 			<!-- <a href="#specs">PC Specs</a> -->
 			<!-- <a href="#setup">Setup</a> -->
 		`;
+
+		return this;
+	}
+
+	listeners() {
+		const links = this.querySelectorAll('a');
+		links.forEach(link => {
+			link.addEventListener('click', (e) => {
+				e.preventDefault();
+				const id = link.getAttribute('href');
+				const section = document.querySelector(id);
+				const sectionPosition = section.getBoundingClientRect();
+				window.scrollTo({
+					top: sectionPosition.y,
+					behavior: 'smooth',
+				});
+			});
+		});
+
 		return this;
 	}
 }

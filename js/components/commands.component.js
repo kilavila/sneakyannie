@@ -18,6 +18,7 @@ class CommandsComponent extends HTMLElement {
 		super();
 
 		this.commands = commands;
+		this.listExpanded = false;
 	}
 
 	connectedCallback() {
@@ -62,11 +63,11 @@ class CommandsComponent extends HTMLElement {
 
 			<ul class="command-list">
 				${this.commands.slice(0, 6).map(cmd => this.renderCommand(cmd)).join('')}
-				<li class="cmd-expand-list">
-					View all commands
-					<i class="nf nf-fa-chevron_down"></i>
-				</li>
 			</ul>
+			<button class="cmd-expand-list">
+				View all commands
+				<i class="nf nf-fa-chevron_down"></i>
+			</button>
 		`;
 
 		return this;
@@ -78,11 +79,31 @@ class CommandsComponent extends HTMLElement {
 				cmd.description.toLowerCase().includes(query) ||
 				cmd.type.toLowerCase().includes(query)
 		);
+		if (query.length === 0) {
+			commandList.innerHTML = this.commands.slice(0, 6).map(cmd => this.renderCommand(cmd)).join('');
+			return;
+		}
 		commandList.innerHTML = filter.map(cmd => this.renderCommand(cmd)).join('');
 	}, 500);
 
-	viewAllCommands(commandList) {
-		commandList.innerHTML = commands.map(cmd => this.renderCommand(cmd)).join('');
+	viewAllCommands(commandList, btn) {
+		this.listExpanded = !this.listExpanded;
+
+		console.log(this.listExpanded);
+
+		if (this.listExpanded) {
+			commandList.innerHTML = commands.map(cmd => this.renderCommand(cmd)).join('');
+			btn.innerHTML = `
+				Hide commands
+				<i class="nf nf-fa-chevron_up"></i>
+			`;
+		} else {
+			commandList.innerHTML = this.commands.slice(0, 6).map(cmd => this.renderCommand(cmd)).join('');
+			btn.innerHTML = `
+				View all commands
+				<i class="nf nf-fa-chevron_down"></i>
+			`;
+		}
 	}
 
 	listeners() {
@@ -99,7 +120,7 @@ class CommandsComponent extends HTMLElement {
 		searchField.addEventListener('input', () => this.commandSearch(commandList, searchField.value.toLowerCase()));
 
 		const expandCmds = this.querySelector('.cmd-expand-list');
-		expandCmds.addEventListener('click', () => this.viewAllCommands(commandList));
+		expandCmds.addEventListener('click', () => this.viewAllCommands(commandList, expandCmds));
 
 		return this;
 	}

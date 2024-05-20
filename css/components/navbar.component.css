@@ -19,12 +19,12 @@ app-navbar {
 		font-style: normal;
 
 		&:hover {
-			border-color: var(--ctp-blue);
+			border-color: var(--ctp-lavender);
 		}
 
 		&>i {
 			margin-right: 6px;
-			color: var(--ctp-blue);
+			color: var(--ctp-lavender);
 		}
 	}
 }
