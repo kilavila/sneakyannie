@@ -8,6 +8,7 @@ app-hero {
 	--hex-inner-opacity: .15;
 
 	position: relative;
+	overflow-y: visible;
 	overflow-x: hidden;
 
 	&>.hex-row {
@@ -23,17 +24,6 @@ app-hero {
 		&>.hex-col {
 			position: relative;
 			padding: var(--hex-spacing);
-
-			&>.hexagon-bee-icon {
-				display: block;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				font-size: 2.5em;
-				color: var(--ctp-rosewater);
-				text-shadow: 0 0 4px var(--ctp-crust);
-			}
 
 			&>.hex-col-inner {
 				position: relative;
@@ -115,6 +105,7 @@ app-hero {
 			0 0 20px var(--ctp-crust),
 			0 0 50px var(--ctp-crust);
 		user-select: none;
+		pointer-events: none;
 
 		&>small {
 			display: block;
@@ -153,6 +144,20 @@ app-hero {
 	}
 
 	/* &>.branding */
+}
+
+.hexagon-bee {
+	&>.hexagon-bee-icon {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 2.5em;
+		color: var(--ctp-rosewater);
+		text-shadow: 0 0 4px var(--ctp-crust);
+		transition-duration: 2s;
+	}
 }
 
 @media screen and (max-width: 500px) {

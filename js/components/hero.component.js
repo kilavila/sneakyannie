@@ -1,6 +1,11 @@
 class HeroComponent extends HTMLElement {
+
 	constructor() {
 		super();
+
+		this.bee;
+		this.clickCounter = 0;
+		this.maxPokes = Math.floor(Math.random() * (99) + 1);
 	}
 
 	connectedCallback() {
@@ -60,23 +65,32 @@ class HeroComponent extends HTMLElement {
 	}
 
 	async listeners() {
+		/** @type {NodeList} */
 		const hexagonList = this.querySelectorAll('.hex-col');
+		/** @type {number} */
 		const randomHexIdx = Math.floor(Math.random() * ((hexagonList.length - 1) - 1) + 1);
-		console.log(hexagonList.length);
-		console.log(randomHexIdx);
 
-		hexagonList.forEach((hex, idx) => {
-			const hexInner = hex.querySelector('.hex-col-inner');
-			const opacity = Math.random();
-			hexInner.style.opacity = opacity;
+		hexagonList.forEach(
+			/** 
+				* @param {HTMLElement} hex
+				* @param {number} idx
+			*/
+			(hex, idx) => {
+				/** @type {HTMLElement} */
+				const hexInner = hex.querySelector('.hex-col-inner');
+				/** @type {number} */
+				const opacity = Math.random();
+				hexInner.style.opacity = opacity.toString();
 
-			if (idx === randomHexIdx) {
-				const icon = document.createElement('i');
-				icon.classList.add('nf', 'nf-md-bee', 'hexagon-bee-icon');
-				hex.append(icon);
-			}
-		});
+				if (idx === randomHexIdx) {
+					hex.classList.add('hexagon-bee');
+					this.bee = document.createElement('i');
+					this.bee.classList.add('nf', 'nf-md-bee', 'hexagon-bee-icon');
+					hex.append(this.bee);
+				}
+			});
 
+		/** @ts-ignore */
 		const sneakyType = new window.TypeIt('#test', {
 			speed: 100,
 			afterComplete: () => {
@@ -84,6 +98,14 @@ class HeroComponent extends HTMLElement {
 			}
 		})
 		sneakyType.pause(1200).type('Sneaky').pause(1600).go();
+
+		console.log(this.maxPokes);
+		this.bee.addEventListener('click', () => {
+			this.clickCounter++;
+			if (this.clickCounter >= this.maxPokes) {
+				alert('Stop poking me!');
+			}
+		});
 
 		return this;
 	}

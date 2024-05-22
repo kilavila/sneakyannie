@@ -7,11 +7,9 @@ class AboutComponent extends HTMLElement {
 		this.render();
 	}
 
+	/** @returns {this} */
 	render() {
 		this.innerHTML = `
-			<!-- <h2> -->
-			<!-- 	About me -->
-			<!-- </h2> -->
 			<p>
 				Hey there, I'm SneakyAnnie, a part-time streamer and sports coach
 				who's all about TrackMania and good times. Join me for casual TrackMania
@@ -24,6 +22,7 @@ class AboutComponent extends HTMLElement {
 				<i class="nf nf-fa-face_grin_beam"></i>
 			</div>
 		`;
+
 		return this;
 	}
 }

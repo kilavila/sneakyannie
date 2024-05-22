@@ -1,118 +1,118 @@
 app-commands {
-	&>.input-group {
-		width: 100%;
-		min-width: 300px;
-		max-width: 500px;
-		margin: 24px 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background-color: var(--ctp-lavender);
-		border: 2px solid var(--ctp-lavender);
-		border-radius: 4px;
-		transition-duration: 0.2s;
+    &>.input-group {
+        width: 100%;
+        min-width: 300px;
+        max-width: 500px;
+        margin: 24px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--ctp-lavender);
+        border: 2px solid var(--ctp-lavender);
+        border-radius: 4px;
+        transition-duration: 0.2s;
 
-		--padding-y: 12px;
+        --padding-y: 12px;
 
-		&>* {
-			font-size: 1em;
-		}
+        &>* {
+            font-size: 1em;
+        }
 
-		&:focus-within {
-			background-color: var(--ctp-yellow);
-			border-color: var(--ctp-yellow);
-		}
+        &:focus-within {
+            background-color: var(--ctp-yellow);
+            border-color: var(--ctp-yellow);
+        }
 
-		&>.input-prefix {
-			padding: var(--padding-y) 14px;
-			color: var(--ctp-overlay-0);
-		}
+        &>.input-prefix {
+            padding: var(--padding-y) 14px;
+            color: var(--ctp-overlay-0);
+        }
 
-		&>input {
-			padding: var(--padding-y) 18px;
-			flex: 1;
-			background-color: var(--ctp-base);
-			color: var(--ctp-text);
-			border: none;
-			border-radius: 0 4px 4px 0;
+        &>input {
+            padding: var(--padding-y) 18px;
+            flex: 1;
+            background-color: var(--ctp-base);
+            color: var(--ctp-text);
+            border: none;
+            border-radius: 0 4px 4px 0;
 
-			&:focus {
-				outline: none;
-			}
-		}
-	}
+            &:focus {
+                outline: none;
+            }
+        }
+    }
 
-	&>.command-list {
-		width: 100%;
-		min-width: 300px;
-		max-width: 500px;
-		list-style: none;
+    &>.command-list {
+        width: 100%;
+        min-width: 300px;
+        max-width: 500px;
+        list-style: none;
 
-		&>.list-item {
-			margin: 10px;
-			padding: 6px 12px;
-			border-radius: 4px;
-			cursor: pointer;
+        &>.list-item {
+            margin: 10px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
 
-			&:nth-child(odd) {
-				background-color: var(--ctp-surface-0);
-				color: var(--ctp-text);
-			}
+            &:nth-child(odd) {
+                background-color: var(--ctp-surface-0);
+                color: var(--ctp-text);
+            }
 
-			&:nth-child(even) {
-				background-color: var(--ctp-peach);
-				color: var(--ctp-crust);
-			}
+            &:nth-child(even) {
+                background-color: var(--ctp-peach);
+                color: var(--ctp-crust);
+            }
 
-			&.highlight {
-				margin: 0 0 24px 0;
-				background-color: var(--ctp-lavender);
-				color: var(--ctp-crust);
-			}
+            &.highlight {
+                margin: 0 0 24px 0;
+                background-color: var(--ctp-lavender);
+                color: var(--ctp-crust);
+            }
 
-			&>* {
-				padding: 4px 0;
-			}
+            &>* {
+                padding: 4px 0;
+            }
 
-			&>.list-item-header {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
+            &>.list-item-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
 
-				&>.keyword {
-					font-size: 1.15em;
-					font-weight: 700;
-				}
+                &>.keyword {
+                    font-size: 1.15em;
+                    font-weight: 700;
+                }
 
-				&>.type {
-					font-size: .9em;
-				}
-			}
-		}
-	}
+                &>.type {
+                    font-size: .9em;
+                }
+            }
+        }
+    }
 
-	&>.cmd-expand-list {
-		width: fit-content;
-		margin: 12px auto;
-		padding: 12px 18px;
-		background-color: var(--ctp-base);
-		color: var(--ctp-lavender);
-		font-size: .95em;
-		font-weight: 700;
-		border: 2px solid var(--ctp-lavender);
-		border-radius: 4px;
-		text-align: center;
-		cursor: pointer;
-		transition-duration: 0.2s;
+    &>.cmd-expand-list {
+        width: fit-content;
+        margin: 12px auto;
+        padding: 12px 18px;
+        background-color: var(--ctp-base);
+        color: var(--ctp-lavender);
+        font-size: .95em;
+        font-weight: 700;
+        border: 2px solid var(--ctp-lavender);
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+        transition-duration: 0.2s;
 
-		&:hover {
-			background-color: var(--ctp-yellow);
-			border-color: var(--ctp-yellow);
-			color: var(--ctp-base);
-		}
+        &:hover {
+            background-color: var(--ctp-yellow);
+            border-color: var(--ctp-yellow);
+            color: var(--ctp-base);
+        }
 
-		&>i {
-			margin-left: 8px;
-		}
-	}
+        &>i {
+            margin-left: 8px;
+        }
+    }
 }

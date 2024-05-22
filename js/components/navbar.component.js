@@ -8,6 +8,10 @@ class NavbarComponent extends HTMLElement {
 			.listeners();
 	}
 
+	// https://discord.com/invite/AhexQMSHp6
+	// https://streamelements.com/sneakyannie/tip
+
+	/** @returns {this} */
 	render() {
 		this.innerHTML = `
 			<a href="#discord">
@@ -31,20 +35,29 @@ class NavbarComponent extends HTMLElement {
 		return this;
 	}
 
+	/** @returns {this} */
 	listeners() {
+		/** @type {NodeList} */
 		const links = this.querySelectorAll('a');
-		links.forEach(link => {
-			link.addEventListener('click', (e) => {
-				e.preventDefault();
-				const id = link.getAttribute('href');
-				const section = document.querySelector(id);
-				const sectionPosition = section.getBoundingClientRect();
-				window.scrollTo({
-					top: sectionPosition.y,
-					behavior: 'smooth',
+
+		links.forEach(
+			/** @param {HTMLElement} link */
+			(link) => {
+				link.addEventListener('click', (e) => {
+					e.preventDefault();
+					/** @type {string} */
+					const id = link.getAttribute('href');
+					/** @type {HTMLElement} */
+					const section = document.querySelector(id);
+					/** @type {DOMRect} */
+					const sectionPosition = section.getBoundingClientRect();
+
+					window.scrollTo({
+						top: sectionPosition.y,
+						behavior: 'smooth',
+					});
 				});
 			});
-		});
 
 		return this;
 	}

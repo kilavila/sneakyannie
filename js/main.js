@@ -3,6 +3,7 @@ import HeroComponent from './components/hero.component.js';
 import AboutComponent from './components/about.component.js';
 import CommandsComponent from './components/commands.component.js';
 
+/** @link https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry */
 class AppContainer extends HTMLElement {
 	constructor() {
 		super();
@@ -12,6 +13,7 @@ class AppContainer extends HTMLElement {
 		this.render();
 	}
 
+	/** @returns {this} */
 	render() {
 		this.innerHTML = `
 			<app-navbar></app-navbar>

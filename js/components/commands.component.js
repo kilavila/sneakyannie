@@ -1,8 +1,15 @@
 import { commands } from '../constants/commands.js';
 
+/**
+	* @param {Function} func
+	* @param {number} wait
+	*
+	* @returns {Function}
+*/
 const debounce = (func, wait) => {
 	let timeout = null;
 
+	/** @param {any[]} args */
 	return function(...args) {
 		if (timeout) {
 			clearTimeout(timeout);
@@ -26,6 +33,7 @@ class CommandsComponent extends HTMLElement {
 			.listeners();
 	}
 
+	/** @param {string} type */
 	cmdIcon(type) {
 		if (type === 'highlighted') return 'nf-md-star';
 		if (type === 'sound') return 'nf-md-music';
@@ -33,6 +41,14 @@ class CommandsComponent extends HTMLElement {
 		if (type === 'other') return 'nf-md-hexagon_outline';
 	}
 
+	/**
+		* @param {Object} cmd
+		* @param {string} cmd.keyword
+		* @param {string} cmd.description
+		* @param {string} cmd.type
+		*
+		* @returns {string}
+	*/
 	renderCommand(cmd) {
 		return `
 			<li title="Copy ${cmd.keyword} to clipboard" data-cmd="${cmd.keyword}" class="list-item ${cmd.type === 'highlighted' ? 'highlight' : ''}">
@@ -47,6 +63,7 @@ class CommandsComponent extends HTMLElement {
 		`;
 	}
 
+	/**	@returns {this} */
 	render() {
 		this.id = 'commands';
 		this.innerHTML = `
@@ -73,19 +90,28 @@ class CommandsComponent extends HTMLElement {
 		return this;
 	}
 
-	commandSearch = debounce((commandList, query) => {
-		const filter = this.commands.filter(
-			cmd => cmd.keyword.toLowerCase().includes(query) ||
-				cmd.description.toLowerCase().includes(query) ||
-				cmd.type.toLowerCase().includes(query)
-		);
-		if (query.length === 0) {
-			commandList.innerHTML = this.commands.slice(0, 6).map(cmd => this.renderCommand(cmd)).join('');
-			return;
-		}
-		commandList.innerHTML = filter.map(cmd => this.renderCommand(cmd)).join('');
-	}, 500);
+	commandSearch = debounce(
+		/**
+		* @param {HTMLElement} commandList
+		* @param {string} query
+		*/
+		(commandList, query) => {
+			const filter = this.commands.filter(
+				cmd => cmd.keyword.toLowerCase().includes(query) ||
+					cmd.description.toLowerCase().includes(query) ||
+					cmd.type.toLowerCase().includes(query)
+			);
+			if (query.length === 0) {
+				commandList.innerHTML = this.commands.slice(0, 6).map(cmd => this.renderCommand(cmd)).join('');
+				return;
+			}
+			commandList.innerHTML = filter.map(cmd => this.renderCommand(cmd)).join('');
+		}, 500);
 
+	/**
+		* @param {HTMLElement} commandList
+		* @param {HTMLElement} btn
+	*/
 	viewAllCommands(commandList, btn) {
 		this.listExpanded = !this.listExpanded;
 
@@ -106,8 +132,11 @@ class CommandsComponent extends HTMLElement {
 		}
 	}
 
+	/**	@returns {this} */
 	listeners() {
+		/** @type {HTMLElement} */
 		const commandList = this.querySelector('.command-list');
+		/** @type {NodeListOf<HTMLElement>} */
 		const commandListItems = this.querySelectorAll('.list-item');
 		commandListItems.forEach(item => {
 			item.addEventListener('click', () => {
@@ -116,9 +145,11 @@ class CommandsComponent extends HTMLElement {
 			});
 		});
 
+		/** @type {HTMLInputElement} */
 		const searchField = this.querySelector('#searchField');
 		searchField.addEventListener('input', () => this.commandSearch(commandList, searchField.value.toLowerCase()));
 
+		/** @type {HTMLElement} */
 		const expandCmds = this.querySelector('.cmd-expand-list');
 		expandCmds.addEventListener('click', () => this.viewAllCommands(commandList, expandCmds));
 

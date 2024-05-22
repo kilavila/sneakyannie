@@ -1,3 +1,7 @@
+/**
+	* @readonly
+	* @const {Object[]}
+*/
 export const commands = [
 	{
 		keyword: '!clip',
